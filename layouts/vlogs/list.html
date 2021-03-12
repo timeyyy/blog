@@ -1,0 +1,56 @@
+{{ define "main" }}
+    {{ $paginator := .Paginate .Data.Pages }}
+
+    <main class="posts">
+        <h1>{{ .Title }}</h1>
+
+        {{ if .Content }}
+      <div class="content">{{ .Content }}</div>
+        {{ end }}
+
+        {{ range $paginator.Pages.GroupByDate "2006" }}
+            <div class="posts-group" >
+                <div class="post-year">{{ .Key }}</div>
+
+                <ul class="posts-list">
+                    {{ range .Pages }}
+                        <li class="post-item card-body " >
+                          <a href="{{.Permalink}}" style="align-items:inherit;">
+                              <div class="col col-md-6">
+                                <img class="" src="https://img.youtube.com/vi/{{.Params.figcaption}}/maxresdefault.jpg" alt="Card image cap">
+                              </div>
+
+                            <div class="col">
+                              <span class="post-title card-title">{{.Title}}</span>
+                                   {{ range .Data.Pages }}
+
+
+                                  {{end}}
+                                  <div class="post-desc">{{.Params.description}}
+                                  </div>
+                                    <div class="flex-column align-items-start">
+                                          <span class="post-time">
+
+                                              {{ if .Site.Params.dateformShort }}
+                                                  {{ .Date.Format .Site.Params.dateformShort }}
+                                              {{ else }}
+                                                  {{ .Date.Format "Jan 2"}}
+                                              {{ end }}
+
+                                          </span>
+
+                                          <span class="post-tag">{{.Params.tag}}
+                                          </span>
+                                    </div>
+
+                            </div>
+
+                            </a>
+                        </li>
+                    {{ end }}
+                </ul>
+            </div>
+        {{ end }}
+    {{ partial "pagination.html" . }}
+    </main>
+{{ end }}

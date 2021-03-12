@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+    <head>
+        {{ partial "head.html" . }}
+    </head>
+
+    {{ block "body" . }}
+        <body class="gradient-2">
+    {{ end }}
+
+        <div class="container ">
+            {{ partial "header.html" . }}
+
+            <div class="content backgr">
+              <div class="">
+                  {{ if .Site.Params.Portrait.Path }}
+                     <img src="{{ .Site.Params.Portrait.Path }}" class="circle" alt="{{ .Site.Params.Portrait.Alt }}" style="max-width:{{ .Site.Params.Portrait.MaxWidth }}" />
+                  {{ end }}
+
+                  <h1></h1>
+                  {{- with .Site.Params.homeSubtitle }}
+                      <p>{{.}}</p>
+                  {{- end }}
+                  <p></p>
+                  {{- with .Site.Params.social }}
+                      <div>
+                          {{ partial "social-icons.html" . }}
+                      </div>
+                  {{- end }}
+              </div>
+
+            </div>
+
+            <!-- {{ block "footer" . }}
+                {{ partial "footer.html" . }}
+            {{ end }} -->
+        </div>
+
+        {{ partial "javascript.html" . }}
+    </body>
+    <style media="screen">
+      a{
+        color: #29a7d6;
+      }
+      a:hover{
+        color: #f30c31;
+      }
+    </style>
+</html>

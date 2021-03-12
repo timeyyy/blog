@@ -1,0 +1,51 @@
+{{ define "main" }}
+    {{ $paginator := .Paginate .Data.Pages }}
+
+    <main class="posts">
+        <h1>{{ .Title }}</h1>
+
+        {{ if .Content }}
+      <div class="content">{{ .Content }}</div>
+        {{ end }}
+
+        {{ range $paginator.Pages.GroupByDate "2006" }}
+            <div class="posts-group" >
+                <div class="post-year">{{ .Key }}</div>
+
+                <ul class="posts-list row" id="tooltip">
+                    {{ range .Pages }}
+                        <li class="post-item card-body ">
+                            <a href="{{.Permalink}}">
+                                <span class="post-title card-title">{{.Title}}</span>
+                                 {{ range .Data.Pages }}
+
+
+                                {{end}}
+                                <div class="col-md-6">
+                                  <img class="" src="https://img.youtube.com/vi/{{.Params.description}}/maxresdefault.jpg" alt="Card image cap">
+
+                                </div>
+
+
+                              <div class="card-footer col-md-6">
+                                <span class="post-day">
+
+                                    {{ if .Site.Params.dateformShort }}
+                                        {{ .Date.Format .Site.Params.dateformShort }}
+                                    {{ else }}
+                                        {{ .Date.Format "Jan 2"}}
+                                    {{ end }}
+
+                                </span>
+
+                                <span class="post-tag">{{ partial "tags.html" . }} </span>
+                              </div>
+                            </a>
+                        </li>
+                    {{ end }}
+                </ul>
+            </div>
+        {{ end }}
+    {{ partial "pagination.html" . }}
+    </main>
+{{ end }}
