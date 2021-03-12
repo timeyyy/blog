@@ -1,0 +1,57 @@
+baseURL = "http://kennhcl.github.io/"
+languageCode = "en-us"
+title = "Tim Eichler's Blog"
+theme = "helloblog"
+github = "https://github.com/"
+twitter = "https://twitter.com/"
+paginate     = 10
+
+
+
+# Metadata mostly used in document's head
+description = "Views expressed are of Tim Eichler alone"
+keywords = "Tim Eichler, blog, tim eichler blog"
+images = [""]
+
+[params.favicon.color]
+mask = "#1b1c1d"
+msapplication = "#1b1c1d"
+theme = "#1b1c1d"
+
+#share posts
+enableSharingButtons = true
+enableInlineShortcodes = true
+includeListPagesInTaxonomyLists = true
+
+[permalinks]
+  posts = "/posts/:year/:month/:title/"
+
+[author]
+  name = "Tim Eichler"
+
+  [taxonomies]
+     tag = "tags"
+     category = "categories"
+
+# menu
+[[menu.main]]
+  identifier = "blog"
+  name       = "Blog"
+  url        = "/posts"
+
+[[menu.main]]
+  identifier = "about"
+  name       = "About"
+  url        = "/about"
+
+[[menu.main]]
+  identifier = "vlog"
+  name       = "Vlog"
+  url        = "/vlogs"
+
+
+
+
+  [languages.en.params.logo]
+  logoText = "TIMOTHY EICHLER"
+  logoHomeLink = "/"
